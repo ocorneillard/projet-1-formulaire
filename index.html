@@ -1,84 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/font.css" type="text/css" >
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <title>Formulaire</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/font.css" type="text/css" >
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <title>Formulaire</title>
+  </head>
+  <body>
 
-  <header>
-    <img src="img/vinyl.jpg"  alt="">
-    <h2>Formulaire de contact</h2>
-  </header>
-
-  <main>
-    <form class="" action="#" method="post">
-
-      <section class="main--input">
-        <label for="Prénom"></label>
-        Prénom :
-        <input id="Prénom" type="text" name="fname" value="" placeholder="John">
-
-        <div class="section--nom">
-          <label for="Nom"></label>
-          Nom :
-          <input id="Nom" type="text" name="lname" value="" placeholder="Smith">
+    <section id="photo--cover" class="section--header">
+      <div class="section--txt">
+        <div class="section--txt--position">
+          <p> Accessoires pour Raspberry à prix d'ami </p>
+          <p> (et un peu d'huile de bras)</p>
         </div>
+      </div>
+    </section>
+                          <!-- Formulaire de contact -->
+    <section class="form--contact">
+      <form  action="index.html" method="post">
+        <div class="form--txt">
+          <div class="form--txt--position">
 
-        <div class="section--genre">
-          <label for="genre"></label>
-            Homme <input id="genre" type="radio" name="genre" value="man">
-            Femme <input id="genre" type="radio" name="genre" value="woman">
+
+            <label for="Prénom"></label>
+            Prénom :
+            <input id="Prénom" type="text" name="fname" value="" placeholder="John">
+
+            <div class="section--nom">
+              <label for="Nom"></label>
+              Nom :
+              <input id="Nom" type="text" name="lname" value="" placeholder="Smith">
+            </div>
+
+            <div class="section--genre">
+              <label for="genre"></label>
+                Homme <input id="genre" type="radio" name="genre" value="man">
+                Femme <input id="genre" type="radio" name="genre" value="woman">
+            </div>
+
+            <div class="section--email">
+              <label for="email"></label>
+              Email :
+              <input id="email" type="email" name="email" value="" placeholder="John.smith@gmail.com">
+            </div>
+
+
+            <label for="Pays"></label>
+            Pays :
+            <select id="Pays" class="" name="Pays">
+              <option name="pays" value="">Belgique</option>
+            </select>
+
+
+          </div>
         </div>
+      </form>
+    </section>
 
-        <div class="section--email">
-          <label for="email"></label>
-          Email :
-          <input id="email" type="email" name="email" value="" placeholder="John.smith@gmail.com">
+                          <!-- Photo -->
+    <section id="photo--cover2" class="section--header">
+      <div class="section--txt">
+        <div class="section--txt--position">
+
+          <label for="sujet"></label>
+          <select id="sujet" class="" name="sujet">
+            <option value="">1 sujet </option>
+            <option value="">2 sujet</option>
+            <option value="">3 sujet</option>
+          </select>
+
         </div>
+      </div>
+    </section>
 
+    <section class="section--header">
+      <div class="section--txt">
+        <div class="section--txt-position">
+          <div class="validation--message">
+            <label for="message"></label>
+            <p>Dites-nous en plus à propos du problème rencontré : </p>
+            <input id="message" type="text" name="" value="" placeholder="Notez votre message ici">
+          </div>
 
-        <label for="Pays"></label>
-        Pays :
-        <select id="Pays" class="" name="Pays">
-          <option name="pays" value="">Belgique</option>
-        </select>
-
-      </section>
-
-      <aside>
-
-        <label for="sujet"></label>
-        <select id="sujet" class="" name="sujet">
-          <option value="">1 sujet </option>
-          <option value="">2 sujet</option>
-          <option value="">3 sujet</option>
-        </select>
-
-
-        <div class="aside--message">
-          <label for="message"></label>
-          <p>Dites-nous en plus à propos du problème rencontré : </p>
-          <input id="message" type="text" name="" value="" placeholder="Notez votre message ici">
+          <div class="validation--btn">
+            <input type="submit" name="submit" value="Envoyez">
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="aside--btn">
-          <input type="submit" name="submit" value="Envoyez">
-        </div>
 
-      </aside>
 
-      <!-- OU
-     <input type="radio" name="" value="">
-     <input type="radio" name="" value="">
-     <input type="radio" name="" value="">    -->
 
-    </form>
-  </main>
 
   <footer>
 
