@@ -12,10 +12,12 @@ body {
 }
 
 footer  {
-  float : right;
   width : 100%;
 }
 
+footer img {
+  float: right;
+}
 header {
     position :fixed;
     display : block;
@@ -29,6 +31,9 @@ header {
     z-index : 2;
 }
 
+form {
+  text-shadow : 0 0 2px #303030;
+}
 input[type="text"] {
   padding : 10px;
   border : none;
@@ -47,6 +52,19 @@ input[type="email"] {
 
 input[type="radio"] {
 
+}
+
+input[type="submit"] {
+  text-decoration : none;
+  background-color : #15c5bd;
+  border : none;
+  border-radius : 10px;
+  font-size : 19px;
+  cursor:  pointer;
+  padding : 14px 20px;
+  -webkit-box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
+  -moz-box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
+  box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
 }
 
 select {
@@ -93,7 +111,7 @@ select {
 
 .section--txt--position img {
   background : white ;
-  border-radius : 1000px;
+  border-radius : 400px 400px 0px 0px;
 }
 
 .form--txt--position {
@@ -126,8 +144,9 @@ select {
   min-height : 300px;
   position :relative;
   text-align : center;
-  background : grey;
+  background : #FFF;
   padding-top : 5vh;
+  text-shadow : 0 0 3px #303030;
 }
 
 .section--trouble--txt-position {
@@ -147,13 +166,27 @@ select {
   grid-template-areas : "radio1 radio2 radio3 radio4" ;
 }
 
+.footer--grid {
+  width : 100%;
+  display:grid;
+  grid-template-areas: "footer--f footer--t footer--l footer--logo right";
+  grid-template-columns : 1fr 1fr 1fr 1fr 1fr;
+  padding-top : 20vh;
+}
+
+.footer--f, .footer--t, .footer--l, .right {
+  padding : auto;
+  padding-top : 50%;
+  text-align :center;
+}
+
+.footer--logo {
+  display : block;
+  margin: auto;
+}
 /* __________________________________________________ */
 /*           #MODULE                                 */
 /* _________________________________________________ */
-
-.lfname {
-
-}
 
 .section--nom {
   padding-top : 3vh;
@@ -169,3 +202,31 @@ select {
 /* __________________________________________________ */
 /*           #STATE                                   */
 /* _________________________________________________ */
+
+.fa {
+  padding: 2vh;
+  font-size: 2vh;
+  width: 2vh;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 5vh;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
