@@ -37,6 +37,7 @@ form {
 input[type="text"] {
   padding : 10px;
   border : none;
+  border-radius : 6px;
   -webkit-box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
   -moz-box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
   box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
@@ -45,6 +46,7 @@ input[type="text"] {
 input[type="email"] {
   padding : 10px;
   border : none;
+  border-radius : 6px;
   -webkit-box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
   -moz-box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
   box-shadow: 0px 0px 9px 0px rgba(21,197,189,1);
@@ -58,6 +60,7 @@ input[type="submit"] {
   text-decoration : none;
   background-color : #15c5bd;
   border : none;
+  border-radius : 6px;
   border-radius : 10px;
   font-size : 19px;
   cursor:  pointer;
@@ -69,6 +72,18 @@ input[type="submit"] {
 
 select {
   padding : 10px;
+}
+
+textarea {
+  width: 80%;
+height: 150px;
+padding: 12px 20px;
+box-sizing: border-box;
+border: 2px solid #ccc;
+border-radius: 4px;
+background-color: #f8f8f8;
+font-size: 16px;
+resize: none;
 }
 
 /* __________________________________________________ */
@@ -154,11 +169,13 @@ select {
   padding-top : 8vh;
 }
 
+
 .validation--btn {
   text-align : center;
   margin : auto;
   padding-top : 5vh;
   padding-bottom : 5vh;
+  color : white;
 }
 
 .radio {
@@ -229,4 +246,10 @@ select {
 .fa-linkedin {
   background: #007bb5;
   color: white;
+}
+
+.fnameerror, .lnameerror, .emailerror, .genreerror, .comerror {
+  background-color : #303030;
+  color : #fff;
+  border-radius : 12px;
 }

@@ -1,6 +1,59 @@
 <?php
+$pays = "Belgique";
+$sanitizearray = array(
+  'fname' => FILTER_SANITIZE_STRING,
+  'lname' => FILTER_SANITIZE_STRING,
+  'genre' => FILTER_SANITIZE_STRING,
+  'email' => FILTER_VALIDATE_EMAIL,
+  'pays'  => FILTER_VALIDATE_STRING,
+  'sujet' => FILTER_VALIDATE_STRING,
+  'com'   => FILTER_SANITIZE_STRING);
 
+$genre = $_POST["genre"];
+if (   isset($_POST["submit"])   ) {
+
+
+  foreach ( $sanitizearray as $m) {
+    $m = trim($m);
+  }
+  $result = filter_input_array(INPUT_POST,$sanitizearray);
+
+  foreach($result as $key => $value){
+    $$key = $value;
+  }
+
+      if ($fname == "")
+      {
+        $fnameerror = "fnameerror";
+      }
+
+      if ($lname =="")
+        {
+        $lnameerror = "lnameerror";
+        }
+      if ($email =="")
+        {
+          $emailerror = "emailerror";
+        }
+      if ($genre =="")
+        {
+          $genreerror = "genreerror";
+        }
+      if ($com =="")
+        {
+          $comerror = "comerror";
+        }
+      else
+      {
+        $mail = "dorian.c.collier@gmail.com";
+        $subject = "Problème : $fname" ;
+        $message = "$fname $lname, $email,  $genre \n Problème rencontré : $com $sujet \n Pays : $pays" ;
+        mail($mail, $subject, $message);
+        header("LOCATION: /projet-1-formulaire/confirmation.php");
+      }
+}
  ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,19 +86,19 @@
       <div class="form--title">
         <h2>Formulaire de contact</h2>
       </div>
-      <form action="/projet-1-formulaire/verify.php" method="post">
+      <form action="#" method="post">
         <div class="form--txt">
           <div class="form--txt--position">
 
             <div class="lfname">
               <label for="Prénom"></label>
-              Prénom :
-              <input id="Prénom" type="text" name="fname" value="" placeholder="John">
+              Prénom* :
+                <input id="Prénom" class="<?= $fnameerror ?>" type="text" name="fname" value="<?= $fname ?>" placeholder="John">
 
               <div class="section--nom">
                 <label for="Nom"></label>
-                Nom :
-                <input id="Nom" type="text" name="lname" value="" placeholder="Smith">
+                Nom* :
+                <input id="Nom" type="text" class="<?= $lnameerror ?>" name="lname" value="<?= $lname ?>" placeholder="Smith">
               </div>
             </div>
 
@@ -53,23 +106,23 @@
             <div class="gemail">
               <div class="section--genre">
                 <label for="genre"></label>
-                  Homme <input id="genre" type="radio" name="genre" value="man">
-                  Femme <input id="genre" type="radio" name="genre" value="woman">
+                  Homme <input id="genre" type="radio" class="<?= $genreerror ?>" name="genre" value="man">
+                  Femme <input id="genre" type="radio" class="<?= $genreerror ?>" name="genre" value="woman">
               </div>
 
               <div class="section--email">
                 <label for="email"></label>
-                Email :
-                <input id="email" type="email" name="email" value="" placeholder="John.smith@gmail.com">
+                Email* :
+                <input id="email" type="email" name="email" class="<?= $emailerror ?>" value="<?= $email ?>" placeholder="John.smith@gmail.com">
               </div>
             </div>
 
 
             <div class="country">
               <label for="pays"></label>
-              Pays :
+              Pays* :
               <select id="pays" name="pays">
-                <option value="France" selected="selected">France </option>
+                <option value="<?= $pays ?>" selected="selected"><?= $pays ?> </option>
 
                 <option value="Afghanistan">Afghanistan </option>
                 <option value="Afrique_Centrale">Afrique_Centrale </option>
@@ -366,13 +419,12 @@
         <div class="section--trouble--txt-position">
           <div class="validation--message">
             <label for="message"></label>
-            <p>Dites-nous en plus à propos du problème rencontré : </p>
-            <textarea placeholder="Notez votre message ici" id="message" rows="20" cols="60" name="com" value="">
-            </textarea>
+            <p>Dites-nous en plus à propos du problème rencontré* : </p>
+            <textarea placeholder="Notez votre message ici" id="message" name="com" value="" class="<?= $comerror ?>"><?= $com ?></textarea>
           </div>
 
           <div class="validation--btn">
-            <input type="submit" name="submit" value="Envoyez">
+            <input type="submit" name="submit" value="Envoyer">
           </div>
         </div>
       </div>
