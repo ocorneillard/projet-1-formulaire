@@ -5,10 +5,23 @@ $sanitizearray = array(
   'lname' => FILTER_SANITIZE_STRING,
   'genre' => FILTER_SANITIZE_STRING,
   'email' => FILTER_VALIDATE_EMAIL,
-  'pays'  => FILTER_VALIDATE_STRING,
-  'sujet' => FILTER_VALIDATE_STRING,
+  'pays'  => FILTER_SANITIZE_STRING,
+  'sujet' => FILTER_SANITIZE_STRING,
   'com'   => FILTER_SANITIZE_STRING);
 
+   $result = filter_input_array(INPUT_POST,$sanitizearray);
+  // $check = [] ;
+  // foreach ($_POST['sujet'] as $value) {                //Pour les checkbox
+  //   $check[] = filter_var($value , FILTER_SANITIZE_STRING);
+  // }
+  // $result[]=$check;
+  // print_r($result);
+  // print_r($check);
+
+
+
+
+print_r($result);
 $genre = $_POST["genre"];
 if (   isset($_POST["submit"])   ) {
 
@@ -16,42 +29,43 @@ if (   isset($_POST["submit"])   ) {
   foreach ( $sanitizearray as $m) {
     $m = trim($m);
   }
-  $result = filter_input_array(INPUT_POST,$sanitizearray);
 
   foreach($result as $key => $value){
     $$key = $value;
   }
 
-      if ($fname == "")
+    if ($fname == "")
+    {
+      $fnameerror = "fnameerror";
+    }
+
+    if ($lname =="")
       {
-        $fnameerror = "fnameerror";
+      $lnameerror = "lnameerror";
+      }
+    if ($email =="")
+      {
+        $emailerror = "emailerror";
+      }
+    if ($genre =="")
+      {
+        $genreerror = "genreerror";
+      }
+    if ($com =="")
+      {
+        $comerror = "comerror";
       }
 
-      if ($lname =="")
-        {
-        $lnameerror = "lnameerror";
-        }
-      if ($email =="")
-        {
-          $emailerror = "emailerror";
-        }
-      if ($genre =="")
-        {
-          $genreerror = "genreerror";
-        }
-      if ($com =="")
-        {
-          $comerror = "comerror";
-        }
-      else
-      {
-        $mail = "dorian.c.collier@gmail.com";
-        $subject = "Problème : $fname" ;
-        $message = "$fname $lname, $email,  $genre \n Problème rencontré : $com $sujet \n Pays : $pays" ;
-        mail($mail, $subject, $message);
-        header("LOCATION: /projet-1-formulaire/confirmation.php");
-      }
+else
+{
+  $mail = "dorian.c.collier@gmail.com";
+  $subject = "Problème : $fname" ;
+  $message = "$fname $lname, $email,  $genre \n Problème rencontré : $com $sujet \n Pays : $pays" ;
+  mail($mail, $subject, $message);
+  header("LOCATION: /projet-1-formulaire/confirmation.php");
 }
+}
+
  ?>
 
 
@@ -86,7 +100,7 @@ if (   isset($_POST["submit"])   ) {
       <div class="form--title">
         <h2>Formulaire de contact</h2>
       </div>
-      <form action="#" method="post">
+      <form action="index.php" method="post">
         <div class="form--txt">
           <div class="form--txt--position">
 
@@ -400,7 +414,7 @@ if (   isset($_POST["submit"])   ) {
         <label for="sujet"></label>
         <div class="radio">
           <span class="radio1">
-            <input type="radio" name="sujet" value="clientèle">Service clientèle
+            <input type="radio" name="sujet" value="clientele">Service clientèle
           </span>
 
           <span class="radio2">
