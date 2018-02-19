@@ -10,16 +10,6 @@ $sanitizearray = array(
   'com'   => FILTER_SANITIZE_STRING);
 
    $result = filter_input_array(INPUT_POST,$sanitizearray);
-  // $check = [] ;
-  // foreach ($_POST['sujet'] as $value) {                //Pour les checkbox
-  //   $check[] = filter_var($value , FILTER_SANITIZE_STRING);
-  // }
-  // $result[]=$check;
-  // print_r($result);
-  // print_r($check);
-
-
-
 
 print_r($result);
 $genre = $_POST["genre"];
@@ -56,13 +46,12 @@ if (   isset($_POST["submit"])   ) {
         $comerror = "comerror";
       }
 
-else
-{
-  $mail = "dorian.c.collier@gmail.com";
-  $subject = "Problème : $fname" ;
-  $message = "$fname $lname, $email,  $genre \n Problème rencontré : $com $sujet \n Pays : $pays" ;
-  mail($mail, $subject, $message);
-  header("LOCATION: /projet-1-formulaire/confirmation.php");
+    if ($fnameerror == null && $lnameerror == null && $emailerror == null && $genreerror == null && $comerror == null){
+      $mail = "dorian.c.collier@gmail.com";
+      $subject = "Problème : $fname" ;
+      $message = "$fname $lname, $email,  $genre \n Problème rencontré : $com $sujet \n Pays : $pays" ;
+      mail($mail, $subject, $message);
+      header("LOCATION: confirmation.php");
 }
 }
 
@@ -104,15 +93,25 @@ else
         <div class="form--txt">
           <div class="form--txt--position">
 
-            <div class="lfname">
+            <div class="section--prenom">
               <label for="Prénom"></label>
               Prénom* :
                 <input id="Prénom" class="<?= $fnameerror ?>" type="text" name="fname" value="<?= $fname ?>" placeholder="John">
+                <?php
+                  if (isset($fnameerror)) {
+                    echo "<span> Prénom incorrect. </span>";
+                  }
+                  ?>
 
               <div class="section--nom">
                 <label for="Nom"></label>
                 Nom* :
                 <input id="Nom" type="text" class="<?= $lnameerror ?>" name="lname" value="<?= $lname ?>" placeholder="Smith">
+                <?php
+                  if (isset($lname)) {
+                    echo "<span> Nom incorrect. </span>";
+                  }
+                  ?>
               </div>
             </div>
 
@@ -122,12 +121,22 @@ else
                 <label for="genre"></label>
                   Homme <input id="genre" type="radio" class="<?= $genreerror ?>" name="genre" value="man">
                   Femme <input id="genre" type="radio" class="<?= $genreerror ?>" name="genre" value="woman">
+                  <?php
+                    if (isset($genreerror)) {
+                      echo "<span> Spécifiez votre sexe.</span>";
+                    }
+                    ?>
               </div>
 
               <div class="section--email">
                 <label for="email"></label>
                 Email* :
                 <input id="email" type="email" name="email" class="<?= $emailerror ?>" value="<?= $email ?>" placeholder="John.smith@gmail.com">
+                <?php
+                  if (isset($genreerror)) {
+                    echo "<span> Adresse incorrecte.</span>";
+                  }
+                  ?>
               </div>
             </div>
 
@@ -435,6 +444,11 @@ else
             <label for="message"></label>
             <p>Dites-nous en plus à propos du problème rencontré* : </p>
             <textarea placeholder="Notez votre message ici" id="message" name="com" value="" class="<?= $comerror ?>"><?= $com ?></textarea>
+            <?php
+              if (isset($comerror)) {
+                echo "<span> Vous devez poster un message. </span>";
+              }
+              ?>
           </div>
 
           <div class="validation--btn">

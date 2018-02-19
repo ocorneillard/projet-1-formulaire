@@ -11,7 +11,7 @@ $options = array(
 
  $result = filter_input_array(INPUT_POST, $options);
 
- if ($result != null AND $result != FALSE) {
+ if ($result[1] != null AND $result[1] != FALSE) {
 
 	echo "Tous les champs ont été nettoyés !";
 
